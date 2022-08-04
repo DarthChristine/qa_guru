@@ -1,0 +1,20 @@
+plugins {
+    id 'java-library' //сказали, что пишем на джаве и подцепили ее библиотеку
+}
+
+repositories {
+    mavenCentral() //сослались на репозиторий мавенцентрал со всеми селенидами, сайт мавен централ
+}
+
+dependencies {
+    testImplementation(
+            'com.codeborne:selenide:6.6.6',  //подцепили библиотеку селенид
+            'org.junit.jupiter:junit-jupiter:5.8.2'  //подцепили библиотеку junit
+
+    )
+
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+}
