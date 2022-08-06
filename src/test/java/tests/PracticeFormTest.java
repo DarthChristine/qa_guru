@@ -27,7 +27,7 @@ public class PracticeFormTest {
         $("[id=firstName]").setValue("Ivan"); //ввели значение в поле ввода
         $("[id=lastName]").setValue("Ivanov");
         $("[id=userEmail]").setValue("ivan@tt.tt");
-        $("#genterWrapper").$(byText("Other")).click();
+        $("#genterWrapper").$(byText("Male")).click();
         $("[id=userNumber]").setValue("1234567890");
 
         //$("[class=react-datepicker-wrapper]").click(); //открыли календарь
@@ -49,9 +49,9 @@ public class PracticeFormTest {
         //$("[id=subjectsInput]").setValue("e"); //ввели букву
         //$(byText("English")).click(); //выбрали значение из открывшегося списка
 
-        $("#subjectsInput").sendKeys("Maths");
+        $("#subjectsInput").sendKeys("English");
         $("#subjectsInput").pressEnter();
-        $("#hobbiesWrapper").$(byText("Sports")).click();
+        $("#hobbiesWrapper").$(byText("Reading")).click();
 
         //$(byText("Reading")).click(); //выбрали чекбокс
 
@@ -71,7 +71,7 @@ public class PracticeFormTest {
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $("[class=table-responsive]").shouldHave(
             text("Ivan Ivanov"), text("ivan@tt.tt"), text("Male"), text("1234567890"),
-            text("11 May,2004"), text("English"), text("Reading"), text("Address"), text("NCR Delhi")); //проверка
+            text("30 July,2008"), text("English"), text("Reading"), text("Address"), text("NCR Delhi")); //проверка
 
 
 
