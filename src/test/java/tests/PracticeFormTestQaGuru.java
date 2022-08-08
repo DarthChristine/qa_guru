@@ -1,20 +1,12 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class PracticeFormTestQaGuru {
-    @BeforeAll
-    static void beforeAll() {
-
-        Configuration.baseUrl = "https://demoqa.com"; //один раз прописали сайт, который будет повторяться
-        Configuration.browserSize = "1920x1080";
-    }
+public class PracticeFormTestQaGuru extends TestBase {
 
     @Test
     void successfulTest() {
@@ -30,7 +22,7 @@ public class PracticeFormTestQaGuru {
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue("alex@egorov.com");
         $("#genterWrapper").$(byText("Other")).click();
-//        $("#gender-radio-3").parent().click();
+//        $("#gender-radio-3").parent().click(); // parent() поднимает на уровень выше в html
 //        $("#gender-radio-3").click(); // WRONG
 //        $(byText("Other")).click(); // WRONG
 //        $("[for=gender-radio-3]").click();
