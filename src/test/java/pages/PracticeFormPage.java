@@ -5,6 +5,8 @@ import com.codeborne.selenide.SelenideElement;
 import pages.components.CalenderComponent;
 import pages.components.ResultsTableComponent;
 
+import java.io.File;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -81,6 +83,49 @@ public class PracticeFormPage {
     public PracticeFormPage setFullName(String firstName, String lastName) { //сразу вводим значения в два поля
         firstNameInput.setValue(firstName);
         lastNameInput.setValue(lastName);
+        return this;
+    }
+
+    public PracticeFormPage setSubjects(String value) {
+        $("#subjectsInput").sendKeys(value);
+        $("#subjectsInput").pressEnter();
+        return this;
+    }
+
+    public PracticeFormPage setHobbies(String value) {
+        $("#hobbiesWrapper").$(byText(value)).click();
+        return this;
+    }
+
+    public PracticeFormPage uploadPicture() {
+        $("#uploadPicture").uploadFile(new File("src/test/java/resources/img/1.png"));
+        return this;
+    }
+
+    public PracticeFormPage setAddress(String value) {
+        $("#currentAddress").setValue(value);
+        return this;
+    }
+
+    public PracticeFormPage setState() {
+        $("#state").click(); //открыли дропдаун
+        $("#stateCity-wrapper").$(byText("NCR")).click(); //выбрали значение из дропдауна
+        return this;
+    }
+
+    public PracticeFormPage setCity() {
+        $("#city").click(); //открыли дропдаун
+        $("#stateCity-wrapper").$(byText("Delhi")).click(); //выбрали значение из дропдауна
+        return this;
+    }
+
+    public PracticeFormPage clickSubmit() {
+        $("#submit").click(); //сабмитнули заполненную форму
+        return this;
+    }
+
+    public PracticeFormPage checkHeader() {
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form")); //проверка
         return this;
     }
 
