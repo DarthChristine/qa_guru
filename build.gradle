@@ -9,10 +9,14 @@ repositories {
 dependencies {
     testImplementation(
             'com.codeborne:selenide:6.6.6',  //подцепили библиотеку селенид
-            'org.junit.jupiter:junit-jupiter:5.8.2'  //подцепили библиотеку junit
-
+            'org.junit.jupiter:junit-jupiter:5.9.0',  //подцепили библиотеку junit
+            'com.github.javafaker:javafaker:1.0.2', //добавили библиотеку джава фейкер для генерации тест данных
+            'org.slf4j:slf4j-simple:1.7.36' //логгер, чтобы вывод селенидовский в консоль не писал всякую красную фигню
     )
+}
 
+tasks.withType(JavaCompile) { //подключили русский язык для полей
+    options.encoding = 'UTF-8'
 }
 
 tasks.withType(Test) {

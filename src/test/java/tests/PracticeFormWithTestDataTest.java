@@ -5,11 +5,12 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.*;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$;
+import static tests.TestData.FIRST_NAME;
+import static tests.TestData.LAST_NAME;
 
-public class PracticeFormTest extends TestBase {
+public class PracticeFormWithTestDataTest extends TestBase {
 
     @Test
     void successfulTest() {
@@ -18,8 +19,10 @@ public class PracticeFormTest extends TestBase {
         executeJavaScript("$('footer').remove()"); // убираем футер
         executeJavaScript("$('#fixedban').remove()"); // убираем рекламу внизу
 
-        $("#firstName").setValue("Ivan"); //ввели значение в поле ввода
-        $("#lastName").setValue("Ivanov");
+        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+
+        $("#firstName").setValue(FIRST_NAME); //ввели значение в поле ввода
+        $("#lastName").setValue(LAST_NAME);
         $("#userEmail").setValue("ivan@tt.tt");
         $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("1234567890");
@@ -47,7 +50,7 @@ public class PracticeFormTest extends TestBase {
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form")); //проверка
         $(".table-responsive").shouldHave(
-                text("Ivan Ivanov"), text("ivan@tt.tt"), text("Male"), text("1234567890"),
+                text(FIRST_NAME + " " + LAST_NAME), text("ivan@tt.tt"), text("Male"), text("1234567890"),
                 text("30 July,2008"), text("English"), text("Reading"), text("Address"), text("NCR Delhi"));
 
     }
